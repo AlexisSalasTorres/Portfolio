@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "My Projects";
+}
+
+<div class="container mt-4 text-center">
+    <h2>My Projects</h2>
+    <p>Click the button below to view my projects.</p>
+
+    
+    <button class="btn btn-primary" id="viewProjectsBtn">View Projects</button>
+
+    
+    <div id="projectSection" class="mt-4" style="display: none;">
+        <h3>Projects</h3>
+
+        
+        <button class="btn btn-secondary my-2 project-toggle" data-target="project1">Project 1</button>
+        <div id="project1" class="alert alert-info mt-2" style="display: none;">
+            <p>🔹 Project 1: A student portfolio website.</p>
+        </div>
+
+        
+        <button class="btn btn-secondary my-2 project-toggle" data-target="project2">Project 2</button>
+        <div id="project2" class="alert alert-info mt-2" style="display: none;">
+            <p>🔹 Project 2: A simple blog page using Bootstrap.</p>
+        </div>
+
+        
+        <button class="btn btn-secondary my-2 project-toggle" data-target="project3">Project 3</button>
+        <div id="project3" class="alert alert-info mt-2" style="display: none;">
+            <p>🔹 Project 3: A personal CV webpage with dark mode.</p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var viewBtn = document.getElementById("viewProjectsBtn");
+        var projectSection = document.getElementById("projectSection");
+
+        
+        viewBtn.addEventListener("click", function () {
+            if (projectSection.style.display === "none") {
+                projectSection.style.display = "block";
+                viewBtn.textContent = "Hide Projects";
+            } else {
+                projectSection.style.display = "none";
+                viewBtn.textContent = "View Projects";
+            }
+        });
+
+        
+        document.querySelectorAll(".project-toggle").forEach(button => {
+            button.addEventListener("click", function () {
+                var targetId = this.getAttribute("data-target");
+                var projectDiv = document.getElementById(targetId);
+                projectDiv.style.display = projectDiv.style.display === "none" ? "block" : "none";
+            });
+        });
+    });
+</script>
